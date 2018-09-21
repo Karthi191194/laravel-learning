@@ -1,0 +1,166 @@
+1.Installing Laravel(Windows)
+	* Install Composer on the machine.
+	* Install Laravel via Composer (composer create-project --prefer-dist laravel/laravel blog - This command will
+		create a laravel project with the name "blog"). Application key will be generated on succesfull installation.
+	* run laravel on the browser with the URL "localhost/blog/public".
+
+2.Directory structure 
+	* APP > HTTP > MIDDLEWARE - The process which we need to do between request and response.
+	* APP - Model (eg: Blog.php)
+	* APP > HTTP > CONTROLLERS - Controller
+	* CONFIG > APP.PHP - if config values not added to .env file it will take from here. 
+	* DATABASE -
+	* RESOURCES > VIEWS - if we use frontend in laravel itself
+	* ROUTES -
+	* STORAGE > LOG - log files (we can configure periods of log in app.php)
+	* STORAGE > FRAMEWORK > VIEWS - Caches all the views and stores here
+	* CONFIG > DATABASE.PHP - db config
+	* .env - if we config in this it will not check for other config files.
+	
+a. Routes: application means api.php or clientside laravel means web.php
+		api.php -> Route:get('user','usercontroller@index')  - if "user" is called invoke "index" method 
+				   from "usercontroller" controller.
+		web.php -> Route:resource('blog','BlogController') - it will determine which method needs to be invoked.		   
+	
+3.Configurations
+
+
+4.Info
+	artisan - is a command line interface (ie. we can create class file using commands...) ( command for listing all
+              artisan - php artisan list )
+		* php artisan make:controller uvcontroller - creates normal controller with name uvcontroller
+		* php artisan make:controller -r uvcontroller - creates controller for rest api with set of functions
+		* php artisan make:model Uvmodel - creates normal model with name Uvmodel
+		* php artisan make:model /model/Uvmodel - creates normal model with name Uvmodel in the folder model
+		* php artisan make:model -m Title - creates migration model (ie. file for the table with the name Title created
+											automatically inside DATABASE > MIGRATIONS)
+		* php artisan migrate - migrate the table to db.
+		* seeder - to import dummy data
+
+	Restapi controller methods- (Video Part 3)
+		index() - get method in rest api
+		create() - view method in rest api
+		store() - post method in rest api
+		show() - get method with individual recored in rest api
+		edit() - show method in rest api
+		update() -
+		destory() - delete method in rest api
+
+1.php artisan config:cache - removes configuration cache, php artisan view:clear - removes view cache
+2.we can set the default length of varchar on "AppServiceProvider.php" file.
+3.Use "php artisan migrate" to migrate the default tables.
+4.*php artisan migrate:rollback - rollback last migration
+  *php artisan migrate:reset -  rollback all the migrations
+  *php artisan migrate:refresh - rollback all the migration and migrate again
+5.php artisan make migration - creates migration table only.
+6.controller name must be in upper camelcase(CustomerController)
+7.MCR(Model Migration Controller) - php artisan make:model model_name -mcr
+8.Soft delete - deletes and keep the data in archieve
+
+Even when the model is deleted manually, the migration's class will still be autoloader by composer. So you have to
+remove the migration class loading from vendor/composer/autoload_classmap.php. Maybe "composer dumpautoload" will work.
+
+by default laravel will take the plural of the model class name as table, if we need to manually add the table name, add
+" protected $table = ‘user’; " to the model.
+
+relationship - table1 primary key is added to the table2 foreign key
+
+	
+5. Eloquent - ORM Model used in laravel	
+
+6. Middleware - Middleware provide a convenient mechanism for filtering HTTP requests entering your application.
+php artisan make:middleware test
+STEPS:
+a. Create the middleware
+b. Register the middleware
+c. Use the middleware
+show the "customer" page only if logged in.
+
+7.DATABASE SEED - php artisan make:seeder CustomerSeeder
+
+
+Model 
+Fillable array
+Laravel automatically uses the plural of the model name if added to the migration as table name or else we can define the table name in the model
+
+Accessor - getter
+Mutators - setter
+
+Blade
+*Master blade file
+*Child blade file
+ -add @extends( ) to extend(use) the master blade file here and add contents. Master blade file serves as a template now.
+-add @yield('name') on the master blade file, the contents added between @section(''name") on the child blade file will be used on the @yield place
+*@include will include view
+
+Sending date to view.
+1.Controller
+$users = ['a','b'];
+return view('user.index', compact('users'));
+View
+{{ $users[0] }}
+
+2.Controller
+return view('user.index', ['text' => 'karthik'] );
+View
+{{ $text }}
+
+3.Controller
+return view('user.index' )->with('text', 'karthik');
+View
+{{ $text }}
+
+
+Pagination
+Controller
+Use User::paginate(10); or User::simplePaginate(10);: instead of User::all( ) to retreivew the data, both method does the same but User::paginate(10) will split and display 10 per page.
+
+
+View
+Total records - $users->total( )
+Count per page - $users->count( )
+Pagination links -  $users->links( )
+
+Validation
+1 request validation - validation inside method itself
+2 Form request validation - validation in separate class
+php artisan make request Store
+
+Tinker - updating, retrieving.... data using command line without mvc
+
+Eloquent
+Controller
+User::all() - all data
+User::find(1) - one data
+
+need to regenerate Composer's autoloader using the dump-autoload command:
+
+**************
+GENERAL -
+1. CLOUSRE:
+function handle(Closure $closure) {
+    $closure('Hello World!');
+}
+handle(function($value){
+    echo $value;
+});
+Which will echo Hello World!
+**************
+
+learing2
+*api controller
+*normal controller
+*model create
+*insert value to table
+*update
+
+learning3
+*middleware
+
+POSTMAN
+https://www.screencast.com/t/QD1btDMYCk3J
+
+
+CARBON
+
+
