@@ -1,3 +1,5 @@
+5.4
+
 1.Installing Laravel(Windows)
 	* Install Composer on the machine.
 	* Install Laravel via Composer (composer create-project --prefer-dist laravel/laravel blog - This command will
@@ -28,7 +30,7 @@ a. Routes: application means api.php or clientside laravel means web.php
 4.Info
 	artisan - is a command line interface (ie. we can create class file using commands...) ( command for listing all
               artisan - php artisan list )
-		* php artisan make:controller uvcontroller - creates normal controller with name uvcontroller
+		* php artisan make:controller uvcontroller - creates normal controller with name uvcontroller. Controller name must be in upper camelcase(CustomerController)
 		* php artisan make:controller -r uvcontroller - creates controller for rest api with set of functions
 		* php artisan make:model Uvmodel - creates normal model with name Uvmodel
 		* php artisan make:model /model/Uvmodel - creates normal model with name Uvmodel in the folder model
@@ -145,6 +147,8 @@ handle(function($value){
     echo $value;
 });
 Which will echo Hello World!
+
+
 **************
 
 learing2
@@ -164,3 +168,16 @@ https://www.screencast.com/t/QD1btDMYCk3J
 CARBON
 
 
+view layout:
+
+add css, js, images to public folder. you can call it by assest() in your blade
+
+//if logged in go the respective page else redirect to login page. 
+    public function handle($request, Closure $next)
+    {
+         if(Auth::check()) {
+            return $next($request);
+        }else{
+            return redirect('login');
+        }
+	}
