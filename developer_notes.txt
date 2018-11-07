@@ -62,8 +62,7 @@ a. Routes: application means api.php or clientside laravel means web.php
 Even when the model is deleted manually, the migration's class will still be autoloader by composer. So you have to
 remove the migration class loading from vendor/composer/autoload_classmap.php. Maybe "composer dumpautoload" will work.
 
-by default laravel will take the plural of the model class name as table, if we need to manually add the table name, add
-" protected $table = ‘user’; " to the model.
+by default laravel will take the plural of the model class name as table, if we need to manually add the table name, add " protected $table = ‘user’; " to the model.
 
 relationship - table1 primary key is added to the table2 foreign key
 
@@ -71,11 +70,14 @@ relationship - table1 primary key is added to the table2 foreign key
 5. Eloquent - ORM Model used in laravel	
 
 6. Middleware - Middleware provide a convenient mechanism for filtering HTTP requests entering your application.
+
+Middleware are the easiest way of verifying HTTP requests before they are passed to the controller.
+
 php artisan make:middleware test
 STEPS:
-a. Create the middleware
-b. Register the middleware
-c. Use the middleware
+a. Create the middleware - creating using artisan and adding funcionalities to the file
+b. Register the middleware - registering in kernerl.php
+c. Use the middleware - using in route
 show the "customer" page only if logged in.
 
 7.DATABASE SEED - php artisan make:seeder CustomerSeeder
@@ -181,3 +183,60 @@ add css, js, images to public folder. you can call it by assest() in your blade
             return redirect('login');
         }
 	}
+	
+****************	
+namespaces	
+
+Crct:
+namespace App;
+
+use Auth;
+
+class MyController {
+    public function index()
+    {
+        $user = Auth::user();
+		//if use Auth not used you can use
+		 $user = /Auth::user();
+    }
+}
+
+Wrng:
+If you omit the use statement or the backslash, then inside of the MyController (which is inside the App namespace, so the full name of the controller is App\MyController, or equivalently \App\MyController) if you write this:
+namespace App;
+
+class MyController {
+    public function index()
+    {
+        // php will now look for the \App\Auth class
+        $user = Auth::user();
+    }
+}
+
+
+------------
+
+// Option one
+\DB::select('your stuff here');
+
+// Option two
+\Illuminate\Support\Facades\DB::select('your stuff here');
+
+// Option three
+use Illuminate\Support\Facades\DB;
+
+DB::select('your stuff here');
+
+// Option four
+use DB;
+
+DB::select('your stuff here');
+
+
+If we add the class without "use", it will check relatively to the "namespace"(ie. inside the mentioned namespace)
+
+
+****************
+dump one simple variable and die” – dd($var)
+
+$projects = Project::all()->toArray(); - object to array
