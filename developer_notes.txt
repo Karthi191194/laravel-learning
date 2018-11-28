@@ -34,8 +34,7 @@ a. Routes: application means api.php or clientside laravel means web.php
 		* php artisan make:controller -r uvcontroller - creates controller for rest api with set of functions
 		* php artisan make:model Uvmodel - creates normal model with name Uvmodel
 		* php artisan make:model /model/Uvmodel - creates normal model with name Uvmodel in the folder model
-		* php artisan make:model -m Title - creates migration model (ie. file for the table with the name Title created
-											automatically inside DATABASE > MIGRATIONS)
+		* php artisan make:model -m Title - creates migration model (ie. file for the table with the name Title created automatically inside DATABASE > MIGRATIONS)
 		* php artisan migrate - migrate the table to db.
 		* seeder - to import dummy data
 
@@ -240,3 +239,46 @@ If we add the class without "use", it will check relatively to the "namespace"(i
 dump one simple variable and die” – dd($var)
 
 $projects = Project::all()->toArray(); - object to array
+
+****************
+composer update - checks for composer.json and updates the packages
+composer dump auto load - refresh the app
+
+install / i#
+The install command reads the composer.json file from the current directory, resolves the dependencies, and installs them into vendor.
+
+php composer.phar install
+If there is a composer.lock file in the current directory, it will use the exact versions from there instead of resolving them. This ensures that everyone using the library will get the same versions of the dependencies.
+
+If there is no composer.lock file, Composer will create one after dependency resolution.
+
+update / u#
+In order to get the latest versions of the dependencies and to update the composer.lock file, you should use the update command. This command is also aliased as upgrade as it does the same as upgrade does if you are thinking of apt-get or similar package managers.
+
+php composer.phar update
+This will resolve all dependencies of the project and write the exact versions into composer.lock.
+
+If you only want to update a few packages and not all, you can list them as such:
+
+php composer.phar update vendor/package vendor/package2
+You can also use wildcards to update a bunch of packages at once:
+
+php composer.phar update vendor/*
+
+require#
+The require command adds new packages to the composer.json file from the current directory. If no file exists one will be created on the fly.
+
+php composer.phar require
+After adding/changing the requirements, the modified requirements will be installed or updated
+
+outdated#
+The outdated command shows a list of installed packages that have updates available, including their current and latest versions. This is basically an alias for composer show -lo.
+
+dump-autoload (dumpautoload)#
+If you need to update the autoloader because of new classes in a classmap package for example, you can use dump-autoload to do that without having to go through an install or update.
+
+***First try composer update . It will update all dependencies but in case it doesn’t work delete vendor folder of your project and type composer install and run in cli which again add dependencies.
+
+************
+
+canvasJS - https://canvasjs.com/jquery-charts/
