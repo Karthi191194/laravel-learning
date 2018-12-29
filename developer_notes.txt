@@ -64,7 +64,7 @@ remove the migration class loading from vendor/composer/autoload_classmap.php. M
 by default laravel will take the plural of the model class name as table, if we need to manually add the table name, add " protected $table = ‘user’; " to the model.
 
 relationship - table1 primary key is added to the table2 foreign key
-
+albertraj part 5 8.39min
 	
 5. Eloquent - ORM Model used in laravel	
 
@@ -162,9 +162,9 @@ learing2
 learning3
 *middleware
 
-POSTMAN
+POSTMAN albertraj video
 https://www.screencast.com/t/QD1btDMYCk3J
-
+https://www.screencast.com/t/GqdCjRr2
 
 CARBON
 
@@ -195,7 +195,7 @@ class MyController {
     public function index()
     {
         $user = Auth::user();
-		//if use Auth not used you can use
+		//if "use Auth" not used you can use
 		 $user = /Auth::user();
     }
 }
@@ -242,7 +242,7 @@ $projects = Project::all()->toArray(); - object to array
 
 ****************
 composer update - checks for composer.json and updates the packages
-composer dump auto load - refresh the app
+composer dump auto load - refresh the app(It just regenerates the list of all classes that need to be included in the project (autoload_classmap.php))
 
 install / i#
 The install command reads the composer.json file from the current directory, resolves the dependencies, and installs them into vendor.
@@ -257,6 +257,8 @@ In order to get the latest versions of the dependencies and to update the compos
 
 php composer.phar update
 This will resolve all dependencies of the project and write the exact versions into composer.lock.
+
+self-update – which updates the composer.phar file to the latest version
 
 If you only want to update a few packages and not all, you can list them as such:
 
@@ -279,6 +281,73 @@ If you need to update the autoloader because of new classes in a classmap packag
 
 ***First try composer update . It will update all dependencies but in case it doesn’t work delete vendor folder of your project and type composer install and run in cli which again add dependencies.
 
+packagist - repo for composer
+
+composer status – Shows a list of dependencies that have been modified locally. If we install something from the source (using the --prefer-source option), we will end up with a clone of that package in the /vendor folder. If we make some changes to that package, the composer status command will show us a git status for those changes.
+
+************
+
+1. composer require <package>. This command will not only create the composer.json file, it will also download all the dependencies specified. - use composer search <package name> and composer require to download.
+
+2. If you used composer init or the manual method, you need to run composer install. This will download all the dependencies needed for the packages described in the composer.json file. - add the required file to composer.json file and then composer install
+
+Note that writing the file manually and then running composer install is the same as running composer require <package>.
+
+Using the composer require <package> approach is a recommended best practice.
+
+composer init will launch the wizard. The wizard will guide us through the generation of our composer.json file. - creating a composer.json file using command
 ************
 
 canvasJS - https://canvasjs.com/jquery-charts/
+
+************
+
+php artisan help make:model - get help for creating model
+
+RELATIONSHIP
+*One To One 
+
+View actual SQL queries before migration in laravel
+php artisan migrate --pretend
+
+How to check current URL in Laravel 5
+Request::fullUrl()
+
+    // example urls
+    // kodementor.com/dashboard/post/this-is-test-post
+ 
+    @if (Request::segment(4) == 'some-text')
+        // Note:
+        // segment(1)  == 'dashboard'
+        // segment(2)  == 'post'
+        // segment(3)  == 'this-is-test-post'
+        // and so on
+    @endif
+
+****	
+Laravel facade is a class that gives access to the object of any container.
+****	
+A method is a function that belongs to a class.
+
+class MyClass
+{
+     public function this_is_a_method() { }
+}
+A trait is a means of sharing code between classes. A trait cannot be instantiated, but rather is included into another class. Both classes and traits can define methods.
+
+trait MyTrait
+{
+     public function this_is_a_method() { }
+}
+Now that I have this trait I can update MyClass to use this trait.
+
+class MyClass
+{
+     use MyTrait;
+}
+You can think of traits as copy and paste. Now MyClass copies the methods defined in MyTrait so you can do this.
+
+$class = new MyClass();
+$class->this_is_a_method();
+Both methods and traits are features of PHP. 	
+****	
