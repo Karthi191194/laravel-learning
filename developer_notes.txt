@@ -26,6 +26,7 @@ a. Routes: application means api.php or clientside laravel means web.php
 	
 3.Configurations
 
+boostrap in laravel - registers the functions 
 
 4.Info
 	artisan - is a command line interface (ie. we can create class file using commands...) ( command for listing all
@@ -250,6 +251,8 @@ The install command reads the composer.json file from the current directory, res
 php composer.phar install
 If there is a composer.lock file in the current directory, it will use the exact versions from there instead of resolving them. This ensures that everyone using the library will get the same versions of the dependencies.
 
+If you have Composer installed globally, simply run composer update instead of php composer.phar update.
+
 If there is no composer.lock file, Composer will create one after dependency resolution.
 
 update / u#
@@ -296,6 +299,13 @@ Note that writing the file manually and then running composer install is the sam
 Using the composer require <package> approach is a recommended best practice.
 
 composer init will launch the wizard. The wizard will guide us through the generation of our composer.json file. - creating a composer.json file using command
+
+When to install and when to update
+
+composer update is mostly used in the 'development phase', to upgrade our project packages according to what we have specified in the composer.json file,
+
+composer install is primarily used in the 'deploying phase' to install our application on a production server or on a testing environment, using the same dependencies stored in the composer.lock file created by composer update.
+
 ************
 
 canvasJS - https://canvasjs.com/jquery-charts/
@@ -351,3 +361,42 @@ $class = new MyClass();
 $class->this_is_a_method();
 Both methods and traits are features of PHP. 	
 ****	
+
+SERVICE PROVIDER -
+The function we writing is the service.
+Service container - is a bag that has all the objects of the application
+For custom provider, create provider using artisan cmd and we need to say laravel to bind this to the service container.
+
+
+request life cycle:
+public/index.php
+- loads composer generated autoloader definition.
+- bootstrap/app.php instance of application/service container
+app/Http/Kernel.php
+- error handling, checking env, common middleware
+-route
+-route specific middleware
+-controller
+
+A singleton is a particular kind of class that, can be instantiated only once.
+
+*How check if some package installed:
+
+composer show // show all installed pacgages
+
+composer show nesbot/carbon // show specific package
+
+
+------------
+
+5.5 - laravel auto pacgage discover, no need to inculde in provide and alias manually when adding new package.
+
+https://www.youtube.com/watch?v=EXMnwMYeWWE
+
+https://www.youtube.com/watch?v=fMXG_arerHA
+
+https://www.youtube.com/watch?v=l201RSQ7Ti4
+
+https://appdividend.com/2018/02/24/laravel-jwt-authentication-tutorial/
+
+https://jwt-auth.readthedocs.io/en/docs/lumen-installation/
