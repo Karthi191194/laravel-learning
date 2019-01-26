@@ -213,6 +213,7 @@ class MyController {
     }
 }
 
+if backward slash not added it will check if namespace exists on within this folder.
 
 ------------
 
@@ -300,7 +301,30 @@ Using the composer require <package> approach is a recommended best practice.
 
 composer init will launch the wizard. The wizard will guide us through the generation of our composer.json file. - creating a composer.json file using command
 
-When to install and when to update
+*************
+*composer update
+
+composer update will update your depencencies as they are specified in composer.json
+
+composer update will:
+
+Read composer.json
+Remove installed packages that are no more required in composer.json
+Check the availability of the latest versions of your required packages
+Install the latest versions of your packages
+Update composer.lock to store the installed packages version
+
+*composer install
+
+composer install will not update anything; it will just install all the dependencies as specified in the composer.lock file
+
+In detail:
+
+Check if composer.lock file exists (if not, run composer-update and create it)
+Read composer.lock file
+Install the packages specified in the composer.lock file
+
+*When to install and when to update
 
 composer update is mostly used in the 'development phase', to upgrade our project packages according to what we have specified in the composer.json file,
 
@@ -391,12 +415,12 @@ composer show nesbot/carbon // show specific package
 
 5.5 - laravel auto pacgage discover, no need to inculde in provide and alias manually when adding new package.
 
-https://www.youtube.com/watch?v=EXMnwMYeWWE
+https://medium.com/vandium-software/5-easy-steps-to-understanding-json-web-tokens-jwt-1164c0adfcec
 
-https://www.youtube.com/watch?v=fMXG_arerHA
+https://blog.pusher.com/laravel-jwt/
 
-https://www.youtube.com/watch?v=l201RSQ7Ti4
+------------
 
-https://appdividend.com/2018/02/24/laravel-jwt-authentication-tutorial/
+if we use folder inside to add controller, we need to use folder name infront of route in web.php
 
-https://jwt-auth.readthedocs.io/en/docs/lumen-installation/
+What does the route::middleware('auth:api') do It states that the route should implement the middleware "auth" and the middleware group "api".
