@@ -234,9 +234,10 @@ use DB;
 DB::select('your stuff here');
 
 
-If we add the class without "use", it will check relatively to the "namespace"(ie. inside the mentioned namespace)
+If we add the class without "use" in opton four , it will check relatively to the "namespace"(ie. inside the mentioned namespace)
 
-
+//
+if we added alias on config > app.php  we can simply use "use DB" if not we need to use "use Illuminate\Support\Facades\DB;".
 ****************
 dump one simple variable and die” – dd($var)
 
@@ -423,4 +424,17 @@ https://blog.pusher.com/laravel-jwt/
 
 if we use folder inside to add controller, we need to use folder name infront of route in web.php
 
-What does the route::middleware('auth:api') do It states that the route should implement the middleware "auth" and the middleware group "api".
+What does the route::middleware('auth:api') do? It states that the route should implement the middleware "auth" and the middleware group "api".
+
+
+
+
+https://www.5balloons.info/user-role-based-authentication-and-access-control-in-laravel/
+
+https://www.5balloons.info/multi-page-step-form-in-laravel-with-validation/
+
+
+https://medium.freecodecamp.org/how-to-create-and-publish-a-chrome-extension-in-20-minutes-6dc8395d7153
+https://medium.freecodecamp.org/how-to-create-a-chrome-extension-part-1-ad2a3a77541
+https://www.youtube.com/watch?v=wHZCYi1K664
+https://stackoverflow.com/questions/42708162/chrome-extension-passing-form-information-to-a-php-file
